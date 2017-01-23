@@ -1,0 +1,230 @@
+
+
+
+*Insert
+1.insert into employee values(1,'Adam Smith','M','2014-01-01','1990-01-01','adam.smith@testimony.com');
+
+insert into employee values(2,'	Barry Jones','M','2015-01-01','1994-02-01','barry.Jones@testimony.com');
+
+insert into employee values(3, 'karma Lee','M','2013-01-01','1987-10-11','karma.lee@testimony.com');
+
+ysql> select * from employee;
++------+-----------------+--------+------------+------------+-------------------------------+
+| eid  | Ename           | gender | doj        | dob        | email                         |
++------+-----------------+--------+------------+------------+-------------------------------+
+|    1 | Adam Smith      | M      | 2014-01-01 | 1990-01-01 | adam.smith@testimony.com      |
+|    2 | Barry Jones     | M      | 2015-01-01 | 1994-02-01 | barry.jones@testimony.com     |
+|    3 | karma Lee       | F      | 2013-01-01 | 1987-10-11 | karma.lee@testimony.com       |
+|    4 | Augustine Smith | M      | 2010-01-01 | 1983-04-01 | augustine.smith@testimony.com |
+|    5 | Jhon Carter     | M      | 2010-01-01 | 1980-04-01 | Jhon.carter@testimony.com     |
+|    6 | neel cafreey    | M      | 2013-01-01 | 1989-04-20 | neel.cafreey@testimony.com    |
+|    7 | Peter Burke     | M      | 2011-01-21 | 1986-04-20 | peter.burke@testimony.com     |
+|    8 | elizabeth burke | F      | 2014-01-01 | 1992-04-20 | elizabeth.burke@testimony.com |
+|    9 | simin shaw      | F      | 2012-01-01 | 1993-01-20 | simin.shaw@testimony.com      |
+|   10 | julia scott     | F      | 2010-01-01 | 1980-01-20 | julia.scott@testimony.com     |
+|  102 | advitaDeshmukh  | f      | 2014-06-30 | 1994-07-20 | TR@gmail.com                  |
+| 1000 | rizwanshaikh    | m      | 2010-02-04 | 1995-03-07 | example@gmail.com             |
+| 1001 | shreyassiddh    | m      | 2012-02-04 | 1994-03-12 | sr@gmail.com                  |
+| 1010 | sarthakthakur   | m      | 2015-03-01 | 1996-12-12 | as@gmail.com                  |
+| 1011 | MukeshaAnand    | m      | 2014-02-28 | 1995-10-12 | ma@gmail.com                  |
+| 1012 | SayaliJadhav    | F      | 2014-02-28 | 1995-11-21 | sJ@gmail.com                  |
+| 1013 | divyaThakkar    | f      | 2014-02-28 | 1995-12-21 | Dt@gmail.com                  |
+| 1014 | sarahsayyad     | f      | 2014-02-28 | 1995-05-14 | ss@gmail.com                  |
+| 1015 | Faizshaikh      | m      | 2014-06-28 | 1995-03-01 | FF@gmail.com                  |
+| 1016 | pratikTilekar   | m      | 2014-06-28 | 1995-07-30 | PT@gmail.com                  |
+| 1017 | Achillisgaikwad | m      | 2014-06-30 | 1995-12-10 | ACh@gmail.com                 |
+| 1018 | tusharravekar   | m      | 2014-06-30 | 1994-02-18 | TR@gmail.com                  |
+| 1019 | pritirawat      | f      | 2014-06-30 | 1994-07-20 | TR@gmail.com                  |
+| 1100 | ajinkyasarnobat | m      | 2015-03-01 | 1990-01-12 | as@gmail.com                  |
++------+-----------------+--------+------------+------------+---------------------
+
+
+
+
+Department Table;
+mysql> select * from department;
++-------+---------+
+| depid | depname |
++-------+---------+
+|   201 | IT      |
+|   202 | HR      |
+|   203 | Sales   |
+|   204 | Admin   |
++-------+---------+
+4 rows in set (0.00 sec)
+
+*Stream Table
+mysql> select * from stream;
++-----+----------+
+| sid | sname    |
++-----+----------+
+|  10 | Tehnical |
+|  11 | Delivery |
++-----+----------+
+2 rows in set (0.00 sec)
+
+
+
+*Role
+ysql> select * from role;
++--------+-------------------------+
+| roleid | rolename                |
++--------+-------------------------+
+|      1 | CEO                     |
+|      2 | CTO                     |
+|      3 | CCO                     |
+|      4 | deliveryHead            |
+|      5 | projectmanager          |
+|      6 | TechLeads               |
+|      7 | seniorprincipalengineer |
+|      8 | PrincipalEngineer       |
+|      9 | SeniorSoftwareEngineer  |
+|     10 | SoftwareEngineer        |
+|     11 | SeniorHRExecutives      |
+|     12 | HRExecutives            |
+|     13 | HRHead                  |
+|     14 | AdminHead               |
++--------+-------------------------+
+
+
+
+*StreamRole
+mysql> select * from streamrole;
++------+------+--------+-------+
+| rsid | sid  | roleid | depid |
++------+------+--------+-------+
+|    1 |   11 |      1 |   201 |
+|    2 | NULL |      1 |   202 |
+|    3 | NULL |      1 |   204 |
+|    4 |   10 |      2 |   201 |
+|    5 | NULL |      3 |   203 |
+|    6 |   11 |     10 |   201 |
+|    7 |   11 |      9 |   201 |
+|    8 |   11 |      4 |   201 |
+|    9 |   11 |      5 |   201 |
+|   10 |   10 |     10 |   201 |
+|   11 |   10 |      9 |   201 |
+|   12 |   10 |      6 |   201 |
+|   13 |   10 |      8 |   201 |
+|   14 |   10 |      7 |   201 |
+|   15 | NULL |     11 |   202 |
+|   16 | NULL |     12 |   202 |
+|   17 | NULL |     13 |   202 |
+|   18 | NULL |     14 |   204 |
++------+------+--------+-------+
+18 rows in set (0.00 sec)
+
+
+
+Employee-Streamrole relation;
+mysql> select * from esr;
++------+------+
+| rsid | eid  |
++------+------+
+|    9 | 1001 |
+|    6 | 1013 |
+|    6 | 1014 |
+|    6 | 1015 |
+|    6 | 1016 |
+|    6 | 1017 |
+|    7 | 1018 |
+|    7 | 1019 |
+|    6 | 1000 |
+|   16 | 1012 |
+|   16 | 1013 |
+|   16 | 1014 |
+|    7 |    1 |
+|    6 |    2 |
+|   12 |    3 |
+|    9 |    4 |
+|    8 | 1001 |
+|   15 |  102 |
+|   17 | 1100 |
+|   11 |  102 |
+|   11 | 1100 |
+|   11 |    5 |
+|   12 |    7 |
+|   13 |    6 |
+|   13 |    8 |
+|   14 |    9 |
+|   14 |   10 |
+
+
+
+
+QUERIES;
+
+1.select employee.Ename,employee.email,department.depname,role.rolename from employee,esr,streamrole,department,role where employee.eid=esr.eid and streamrole.depid=department.depid and streamrole.roleid=role.roleid and streamrole.rsid=esr.rsid order by department.depname,employee.Ename;
++-----------------+-------------------------------+---------+-------------------------+
+| Ename           | email                         | depname | rolename                |
++-----------------+-------------------------------+---------+-------------------------+
+| advitaDeshmukh  | TR@gmail.com                  | HR      | SeniorHRExecutives      |
+| ajinkyasarnobat | as@gmail.com                  | HR      | HRHead                  |
+| divyaThakkar    | Dt@gmail.com                  | HR      | HRExecutives            |
+| sarahsayyad     | ss@gmail.com                  | HR      | HRExecutives            |
+| SayaliJadhav    | sJ@gmail.com                  | HR      | HRExecutives            |
+| Achillisgaikwad | ACh@gmail.com                 | IT      | SoftwareEngineer        |
+| Adam Smith      | adam.smith@testimony.com      | IT      | SeniorSoftwareEngineer  |
+| advitaDeshmukh  | TR@gmail.com                  | IT      | SeniorSoftwareEngineer  |
+| ajinkyasarnobat | as@gmail.com                  | IT      | SeniorSoftwareEngineer  |
+| Augustine Smith | augustine.smith@testimony.com | IT      | projectmanager          |
+| Barry Jones     | barry.jones@testimony.com     | IT      | SoftwareEngineer        |
+| divyaThakkar    | Dt@gmail.com                  | IT      | SoftwareEngineer        |
+| elizabeth burke | elizabeth.burke@testimony.com | IT      | PrincipalEngineer       |
+| Faizshaikh      | FF@gmail.com                  | IT      | SoftwareEngineer        |
+| Jhon Carter     | Jhon.carter@testimony.com     | IT      | SeniorSoftwareEngineer  |
+| julia scott     | julia.scott@testimony.com     | IT      | seniorprincipalengineer |
+| karma Lee       | karma.lee@testimony.com       | IT      | TechLeads               |
+| neel cafreey    | neel.cafreey@testimony.com    | IT      | PrincipalEngineer       |
+| Peter Burke     | peter.burke@testimony.com     | IT      | TechLeads               |
+| pratikTilekar   | PT@gmail.com                  | IT      | SoftwareEngineer        |
+| pritirawat      | TR@gmail.com                  | IT      | SeniorSoftwareEngineer  |
+| rizwanshaikh    | example@gmail.com             | IT      | SoftwareEngineer        |
+| sarahsayyad     | ss@gmail.com                  | IT      | SoftwareEngineer        |
+| shreyassiddh    | sr@gmail.com                  | IT      | deliveryHead            |
+| shreyassiddh    | sr@gmail.com                  | IT      | projectmanager          |
+| simin shaw      | simin.shaw@testimony.com      | IT      | seniorprincipalengineer |
+| tusharravekar   | TR@gmail.com                  | IT      | SeniorSoftwareEngineer  |
++-----------------+-------------------------------+---------+-------------------------+
+27 rows in set (0.00 sec)
+
+2. select employee.Ename ,employee.email, role.rolename from employee,role,streamrole,esr where employee.eid=esr.eid and role.roleid=streamrole.roleid and streamrole.rsid=esr.rsid and role.rolename='SoftwareEngineer';
++-----------------+---------------------------+------------------+
+| Ename           | email                     | rolename         |
++-----------------+---------------------------+------------------+
+| divyaThakkar    | Dt@gmail.com              | SoftwareEngineer |
+| sarahsayyad     | ss@gmail.com              | SoftwareEngineer |
+| Faizshaikh      | FF@gmail.com              | SoftwareEngineer |
+| pratikTilekar   | PT@gmail.com              | SoftwareEngineer |
+| Achillisgaikwad | ACh@gmail.com             | SoftwareEngineer |
+| rizwanshaikh    | example@gmail.com         | SoftwareEngineer |
+| Barry Jones     | barry.jones@testimony.com | SoftwareEngineer |
++-----------------+---------------------------+------------------
+
+
+3.mysql> select employee.Ename ,employee.email, role.rolename from employee,role,streamrole,esr where employee.eid=esr.eid and role.roleid=streamrole.roleid and streamrole.rsid=esr.rsid and employee.doj between 2017-01-01 and 2017-01-31;
+Empty set, 2 warnings (0.00 sec)
+      in table did not have anyone who join in jan 2017
+
+4.mysql> select employee.eid, employee.Ename,employee.gender,employee.email, role.rolename from employee,role,streamrole,esr where employee.eid=esr.eid and role.roleid=streamrole.roleid and streamrole.rsid=esr.rsid and (datediff(curdate(),employee.doj)/365.25)>3;
++------+-----------------+--------+-------------------------------+-------------------------+
+| eid  | Ename           | gender | email                         | rolename                |
++------+-----------------+--------+-------------------------------+-------------------------+
+| 1001 | shreyassiddh    | m      | sr@gmail.com                  | projectmanager          |
+| 1000 | rizwanshaikh    | m      | example@gmail.com             | SoftwareEngineer        |
+|    1 | Adam Smith      | M      | adam.smith@testimony.com      | SeniorSoftwareEngineer  |
+|    3 | karma Lee       | F      | karma.lee@testimony.com       | TechLeads               |
+|    4 | Augustine Smith | M      | augustine.smith@testimony.com | projectmanager          |
+| 1001 | shreyassiddh    | m      | sr@gmail.com                  | deliveryHead            |
+|    5 | Jhon Carter     | M      | Jhon.carter@testimony.com     | SeniorSoftwareEngineer  |
+|    7 | Peter Burke     | M      | peter.burke@testimony.com     | TechLeads               |
+|    6 | neel cafreey    | M      | neel.cafreey@testimony.com    | PrincipalEngineer       |
+|    8 | elizabeth burke | F      | elizabeth.burke@testimony.com | PrincipalEngineer       |
+|    9 | simin shaw      | F      | simin.shaw@testimony.com      | seniorprincipalengineer |
+|   10 | julia scott     | F      | julia.scott@testimony.com     | seniorprincipalengineer |
++------+-----------------+--------+-------------------------------+-------------------------+
+12 rows in set (0.00 sec)
+
+
+5.
+
