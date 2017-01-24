@@ -226,5 +226,28 @@ Empty set, 2 warnings (0.00 sec)
 12 rows in set (0.00 sec)
 
 
-5.
+
+5. youngest employee 
+mysql> select employee.Ename,max(employee.dob),department.depname from employee,streamrole,department,esr where employee.eid=esr.eid and department.depid=streamrole.depid and esr.rsid=streamrole.rsid group by department.depid;
++--------------+-------------------+---------+
+| Ename        | max(employee.dob) | depname |
++--------------+-------------------+---------+
+| shreyassiddh | 1995-12-21        | IT      |
+| SayaliJadhav | 1995-11-21        | HR      |
++--------------+-------------------+---------+
+2 rows in set (0.01 sec)
+
+
+6. oldest employee.
+
+
+mysql> select employee.Ename,min(employee.dob),department.depname from employee,streamrole,department,esr where employee.eid=esr.eid and department.depid=streamrole.depid and esr.rsid=streamrole.rsid group by department.depid;
++--------------+-------------------+---------+
+| Ename        | min(employee.dob) | depname |
++--------------+-------------------+---------+
+| shreyassiddh | 1980-01-20        | IT      |
+| ajinkyasarnobat | 1990-01-12        | HR      |
++--------------+-------------------+---------+
+
+
 
