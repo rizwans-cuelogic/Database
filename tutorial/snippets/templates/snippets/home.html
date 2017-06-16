@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{% static 'snippets/angular.min.js' %}"></script>
+<script src="{% static 'snippets/app.js' %}"></script>
+<script src="{% static 'snippets/js/controllers/MainController.js' %}"></script>
+<script src="{% static 'snippets/js/review.js' %}"></script>
+<style>
+    .ng-invalid.ng-dirty{
+        border-color:#FA787E;
+    }
+    .ng-valid.ng-dirty{
+        border-color:#78FA89;
+    }
+</style>
+</head>
+<body ng-app="app">
+<div class="main" ng-controller="MainController">
+    <div class="container">
+		<div class="jumbotron text-center">
+        	<h1> // title // </h1>
+        	<h2> //promo // </h2>
+        </div>
+        <div class="row">
+			<div class="col-md-4" ng-repeat="product in prds | orderBy:'-price'">
+        	   <h1>// product.name //</h1>
+        	   <section ng-init="tab = 1" ng-controller="PanelController as panel">
+        		    <ul class="nav nav-pills">
+        		      	<li>
+        				    <a href ng-click="tab = 1">Description</a>
+                        </li>
+                        <li>
+        				    <a href ng-click="tab = 2">Specifications</a>
+                        </li>
+                        <li>
+        				    <a href ng-click="tab = 3">Reviews</a>
+                        </li>
+                    </ul>
+                    <div class="panel" ng-show="tab === 1">
+        			    <h3>Description</h3>
+                        <blockquote>// product.description //</blockquote>
+                    </div>
+                    <div class="panel" ng-show="tab === 2">
+                        <h3>Specifications</h3>
+                        <blockquote>// product.specification //</blockquote>  
+                    </div>
+                    <div class="panel" ng-show=" tab === 3">
+                        <h3>Reviews</h3>
+                        <blockquote>
+                            <strong>Stars:// product.rate //</strong>
+                            // product.reviews //<br/>
+                            <cite>by : //product.author //</cite>
+                        </blockquote>
+                        <form name="reviewf" id="reviewform" method="post" ng-controller="ReviewController as reviewctrl" ng-submit=reviewf.$valid && reviewctrl.addreview(product) novalidate>
+                            <blockquote>
+                                <strong>Stars:// products.rate //</strong>
+                                // products.reviews //<br/>
+                                <cite>by : // products.author //</cite>
+                            </blockquote>
+                        <h3>Submit Reviews</h3>    
+                        {% csrf_token %}
+                            <select  ng-model="products.rate" id="ratebar" class="form-control form-group" required>
+                                <option value="1">1 star</option>
+                                <option value="2">2 star</option>
+                                <option value="3">3 star</option>
+                                <option value="4">4 star</option>
+                                <option value="5">5 star</option>
+                            </select>
+                            <textarea ng-model="products.reviews" id="textword" class="form-control form-group" required>
+                            </textarea>
+                            <cite>by : </cite>
+                            <input ng-model="products.author" id="email1" class="form-control form-group" type="email" placeholder="abc@gmail.com" required>
+                            <button ng-click="reviewctrl.addreview(product)" type="submit" class="btn btn-info pull-right">Submit</button>
+                            <div> review form is // reviewf.$valid //  </div>
+                        </form>
+
+                    </div>
+                </section>
+                <h2><em>// product.price | currency // </em></h2>
+                <button class="btn btn=success" ng-show="product.canpurchase">Add To Cart</button>
+            </div>    
+        </div>
+    </div>
+
+</body>
+</html> 

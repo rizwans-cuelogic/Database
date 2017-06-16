@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{% static 'snippets/angular.min.js' %}"></script>
+<script src="{% static 'snippets/app.js' %}"></script>
+<script src="{% static 'snippets/js/controllers/MainController.js' %}"></script>
+<script src="{% static 'snippets/js/review.js' %}"></script>
+<style>
+    .ng-invalid.ng-dirty{
+        border-color:#FA787E;
+    }
+    .ng-valid.ng-dirty{
+        border-color:#78FA89;
+    }
+</style>
+</head>
+<body ng-app="app">
+<div class="main" ng-controller="MainController">
+	<div class="container">
+	<div class="col-md-offset-3 col-md-6">
+	<h3> ADD PRODUCT</h3>
+	<hr>
+		<form name="addform" id="form" method="post" ng-controller="addproductController as addctrl" ng-submit=addform.$valid && addctrl.addproduct(item) novalidate>
+			<div class="form-group">
+				<label>Jewel-Name</label>
+				<input class="form-control" type="textfield" name="name" ng-model="item.name" required> 
+			</div>
+			<div class="form-group">
+				<label>Description</label>
+				<input class="form-control" type="textfield" ng-model="item.description" required>
+			</div>
+			<div class="form-group">
+				<label>Specification</label>
+				<input class="form-control" type="trxtfield" ng-model="item.specification" required>
+			</div>
+			<div class="form-group">
+				<label>Price</label>
+				<input class="form-control" type="trxtfield" ng-model="item.price" required>
+			</div>
+			<div class="form-group">
+				<button ng-click=addctrl.addproduct(item) type="submit" class="btn btn-success">create</button>
+			</div>
+			<span> form is // addform.$valid //</span>
+		</form>
+	</div>
+	</div>
+</div>
+</body>
+</html>
